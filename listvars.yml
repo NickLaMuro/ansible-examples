@@ -6,3 +6,6 @@
     - name: Display all variables/facts known for a host
       debug:
         var: hostvars[inventory_hostname]
+    - name: "DO IT AGAIN!!!1!"
+      debug:
+        var: hostvars[inventory_hostname]

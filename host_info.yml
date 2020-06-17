@@ -1,0 +1,12 @@
+- name: Host Info
+  hosts: all
+  tasks:
+    - name: Display host info
+      debug:
+        msg: >
+          {% for host in groups['all'] %}
+          Date: {{ hostvars[host]["ansible_date_time"]["date"] }}
+          Host: {{ host }}
+          IP:   {{ hostvars[host]["ansible_all_ipv4_addresses"] }}
+          {% endfor %}
+

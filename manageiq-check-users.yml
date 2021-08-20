@@ -1,0 +1,20 @@
+- name: ManageIQ Check Users Sample
+  hosts: all
+  gather_facts: false
+
+  vars:
+    manageiq_connection:
+      manageiq_validate_certs: false
+
+  roles:
+    - role: manageiq-core.manageiq-vmdb
+
+  tasks:
+    - name: Get Users
+      manageiq_vmdb:
+        href: "users"
+      register: vmdb_users
+
+    - name: Print Users
+      debug:
+        msg: "Hello Users!  {{ vmdb_users }}"
